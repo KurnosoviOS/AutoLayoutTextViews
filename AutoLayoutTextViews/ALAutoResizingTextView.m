@@ -78,6 +78,16 @@
   [self setNeedsDisplay];
 }
 
+#pragma mark - Events handling
+
+-( NSArray<UIKeyCommand *> *)keyCommands {
+    if ([self.delegate respondsToSelector:@selector(getKeyCommandsForTextView:)]) {
+        NSArray<UIKeyCommand *> *keyCommands = [self.delegate getKeyCommandsForTextView:self];
+        return keyCommands;
+    }
+    return nil;
+}
+
 #pragma mark - View
 
 - (void)layoutSubviews

@@ -33,15 +33,21 @@
 @optional
 
 /**
- *	Tells the delegate that the text view's height is about to change.
+ *    Tells the delegate that the text view's height is about to change.
  *
- *	@param	textView	The text view whose height is about to change
- *	@param	oldHeight	The current height of the text view
- *	@param	newHeight	The new height of the text view
+ *    @param    textView    The text view whose height is about to change
+ *    @param    oldHeight    The current height of the text view
+ *    @param    newHeight    The new height of the text view
  *
  *  @discussion This method gets called in the animation block.
  */
 - (void)textView:(ALAutoResizingTextView *)textView willChangeFromHeight:(CGFloat)oldHeight toHeight:(CGFloat)newHeight;
+
+
+/**
+ *    get key commands from delegate
+ */
+- (NSArray<UIKeyCommand *> *  _Nullable )getKeyCommandsForTextView:(ALAutoResizingTextView *)textView;
 
 /**
  *	Tells the delegate that the text view's height did change.
@@ -66,10 +72,11 @@
  */
 @property (weak, nonatomic) id <ALAutoResizingTextViewDelegate> delegate;
 
+
 /**
- *	The minimum height for the text view.
+ *    The minimum height for the text view.
  *
- *  @discussion The default value is `0`. 
+ *  @discussion The default value is `0`.
  *  If you attempt to set a negative value, `minimumHeight` will be set to `0`.
  */
 @property (assign, nonatomic) IBInspectable CGFloat minimumHeight;
